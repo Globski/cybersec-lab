@@ -71,11 +71,35 @@ sudo ./firewall_check.sh
 
 #### IP Monitor
 
-Monitor IP connections on an interface for a specified duration (requires `sudo`):
+Monitor IP connections on a network interface for a specified duration (requires `sudo`):
 
 ```bash
 sudo ./ip_monitor.sh -i eth0 -t 30
 ```
+
+---
+
+### Important Note: Installing `netstat`
+
+The IP monitor script uses the `netstat` command, which may not be installed by default on some Linux distributions.
+
+To install it, run:
+
+```bash
+sudo apt update
+sudo apt install net-tools
+```
+
+This installs the package that provides the `netstat` command, preventing the `command not found` error.
+
+### Summary
+
+* Make sure `net-tools` is installed before running `ip_monitor.sh`.
+* Run the script with `sudo` for full network access.
+* Use the `-i` option to specify the interface (e.g., `eth0`).
+* Use the `-t` option to specify monitoring duration in seconds.
+
+---
 
 ## Features
 
